@@ -1,0 +1,5 @@
+# lldb config file
+
+settings set target.x86-disassembly-flavor intel # set intel flavor
+settings set prompt "(jjaniec) " # set prompt 🤔
+command script import ~/banner.py # import and eval python script
