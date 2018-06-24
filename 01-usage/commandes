@@ -1,28 +1,32 @@
+# comment this before push
+breakpoint set -n main
+process launch
+
 # Set Breakpoints
 breakpoint s -l 18 -o
 breakpoint s -p "return (tmp|biggest).*"
 
 # Prepare temporary variables
-p int $tmp[3]       
+p int $gtmp[3]
 
 # Set variable watchpoint        
-w set variable count
-w c a 1                    
-"expr if (count != 0) $backup[count - 1] = tab[1]
-continue
+watchpoint set variable count
+watchpoint c add 1
+"p if (count != 0) $gtmp[count - 1] = tab[1]
+c
 DONE"
 c
 w delete 1
 
-p for (int i = 0; i < 3; i++) tab[i] = $tmp[i]; # copy tab in tmp array
+p for (int i = 0; i < 3; i++) tab[i] = $gtmp[i]; # copy tab in tmp array
 n
 p count = 0 # reset variable
 c
 
 # Recalculate f(average) return
-p for (int i = 0; i < 3; i++) tab[i] = $tmp[i];
+p tmp = ($gtmp[0] + $gtmp[1] + $gtmp[2]) / max
 c
 
 # Recalculate f(max) return
-p expression for (int i = 0; i < 3; i++) tab[i] = $tmp[i];
+p for (int i = 0; i < 3; i++) if (biggest <= min[i]) biggest = min[i];
 c
