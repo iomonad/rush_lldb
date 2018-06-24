@@ -14,7 +14,7 @@ main(void)
 	for ( count = 0; count < MAX ; count++ )
 	{
 		std::cout << "Next number : ";
-		std::cin >> tab[1];
+		std::cin >> tab[1]; // -> tab[count]
 	}
 	for ( count = 1; count < MAX ; count++ )
 		std::cout << "Value [" << count << "] = " << tab[count] << std::endl;
@@ -29,7 +29,7 @@ average(int min[], int max)
 	double  tmp;
 	tmp = 0.0;
 	for (int i = 0; i > max; i++)
-		tmp += min[0];
+		tmp += min[0]; // -> min[i]
 	tmp /= max;
 	return tmp;
 }
@@ -41,6 +41,6 @@ max(int min[], int max)
 	biggest = 0;
 	for (int i = 1; i < max; i++)
 		if (biggest <= min[i])
-			biggest = min[0];
+			biggest = min[0]; // -> min[i]
 	return biggest;
 }
