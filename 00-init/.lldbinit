@@ -1,7 +1,7 @@
 # lldb config file
 
 settings set target.x86-disassembly-flavor intel # set intel flavor
-settings set prompt "(jjaniec) " # set prompt 🤔
+settings set prompt "(jjaniec) "
 
 script print "\033[31m"
 script print "⠀⠰⡿⠿⠛⠛⠻⠿⣷"
